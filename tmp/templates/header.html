@@ -1,0 +1,49 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - Body Consturctor</title>
+    {% else %}
+    <title>Body Constructor</title>
+    {% endif %}
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  </head>
+
+  <body>
+
+    <div class="headcontainer">
+
+      <div id="header">
+        <h1>Body Constuctor</h1>
+          <nav>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li>
+                <a href="#">My Transformation <span class="caret"></span></a>
+                <div>
+                  <ul>
+                    <li><a href="#">Video Transformation</a></li>
+                    <li><a href="#">Numerical Trends</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+
+        <div id="useravatar">
+          <ul>
+            <li><img src="#" alt="userpic"></li>
+            <li>USERNAME</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  </body>
+
+</html>
