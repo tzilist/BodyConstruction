@@ -1,0 +1,76 @@
+* First web app: workout progress
+** Web References
+   [[file:bookmarks_9_6_15.html][Bookmarks]]
+   [[http://ondras.zarovi.cz/sql/demo/][WWW SQL Designer]]
+** Goals
+*** Learn useful transferrable "full stack" programming
+*** Make an architecture that can transfer to iOS and Android apps
+*** App characteristics
+**** Device agnostic (mobile friendly)
+**** Multi-user
+     + Users' data is kept separate from other users
+     + Requires authentication
+**** Python web framework: Flask?  Yeah, how about flask.  Coz Django is lame
+*** Fateful choices
+**** JQuery?
+**** How do we interact with the DB?
+     + [[http://www.sqlalchemy.org/features.html][SQL Alchemy]]
+       + Has a core SQL abstraction, as well as an optional ORM module
+     + Django's ORM
+     +
+**** Python Framework
+     + Django (I think it's too heavy/clunky)
+     + Flask - "microframework" suitable for small apps
+       #+BEGIN_SRC python
+         # from http://flask.pocoo.org/ tutorial
+         from flask import Flask
+         app = Flask(__name__)
+
+         @app.route("/") # take note of this decorator syntax, it's a common pattern
+         def hello():
+             return "Hello World!"
+
+         if __name__ == "__main__":
+             app.run()
+       #+END_SRC
+       #+BEGIN_QUOTE
+       This is why there aren't bootstrapping tools for Flask: there isn't a demand for them. From the above Hello World featured on Flask's homepage, a developer with no experience building Python web applications can get hacking immediately.
+       #+END_QUOTE
+     + Pyramid (flexible, light, persistence layer)
+*** MVC or MV* architecture - separation of concerns
+    + It's important to make each component of the web stack responsible only for its
+      limited domain.  The server does not send back HTML and CSS fragments, only data.
+      The client is responsible for the UI (presentation and uer interaction).  
+    + A good read (with dodgy English) is here [[http://blog.octo.com/en/new-web-application-architectures-and-impacts-for-enterprises-1]]
+    + Another: [[http://www.codeproject.com/Articles/766150/MV-MVC-MVP-MVVM-An-Investigation-From-the-Ground]]
+* Let's do this - steps to enlightenment
+** DONE Shared project on Github
+   :LOGBOOK:
+   - State "DONE"       from              [2015-09-08 Tue 21:26]
+   :END:
+   + github user: tzilist
+   + Repo: BodyConstruction
+** TODO Put up a shared dev environment
+   We could use any number of clouder server options, including AWS EC2, Google Cloud,
+   Digital Ocean, Heroku etc.  Heroku has a free option that allows 18 hours of access in
+   a 24-hour period.  BUT, Greg has a dreamhost account with unlimited access for no extra
+   charge, so we'll probably try that first. 
+   
+   + [[http://wiki.dreamhost.com/Flask]]
+   + [[https://mattcarrier.com/flask-dreamhost-setup/][Setting up and deploying Python Flask to Dreamhost]]
+** TODO Run through a good flask tutorial
+*** TODO [[http://flask.pocoo.org/docs/0.10/quickstart/][Flask quickstart]]
+*** STARTED [[http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world][The Flask Mega-Tutorial, Part I: Hello, World!]] 	       :NEXT:
+    :LOGBOOK:
+    - State "STARTED"    from "TODO"       [2015-09-11 Fri 08:37]
+    :END:
+**** Notes on the mega-tutorial 
+     + The DB code uses an ORM called SQLAlchemy.  I would prefer to use SQL with maybe a
+       very light compatibility layer in our BodyConstruction project
+     + Auth methods using OpenID is not good.  We should prefer OAuth for BodyConstruction
+* Ted's programming environment
+  + OS: Windows 10 / Cygwin 32-bit
+  + Editor: Not emacs   :(
+  + Github account: tzilist
+
+
