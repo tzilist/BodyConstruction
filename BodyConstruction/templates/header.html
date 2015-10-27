@@ -1,10 +1,13 @@
+{% if title %}
+   {%set mytitle = title + ' - Body Constructor' %}
+{% else %}
+   {%set mytitle = 'Body Constructor' %}
+{% endif %}
+
+
 <html>
   <head>
-    {% if title %}
-    <title>{{ title }} - Body Consturctor</title>
-    {% else %}
-    <title>Body Constructor</title>
-    {% endif %}
+    <title>{{ mytitle }}</title>
     <link rel="stylesheet" type="text/css" href="../static/css/headerstyle.css">
   </head>
 
@@ -13,7 +16,7 @@
     <div class="headcontainer">
 
       <div id="header">
-        <h1>Body Constuctor</h1>
+        <h1>{{ mytitle }}</h1>
       </div>
           <nav>
             <div id="useravatar">
