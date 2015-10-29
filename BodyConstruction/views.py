@@ -32,7 +32,7 @@ def index():
 @login_required
 def home():
     return render_template('home.html',
-                            title='User home base of solidtude')
+                           title='User home base of a solid \'tude')
 
 
 #function to log user in
