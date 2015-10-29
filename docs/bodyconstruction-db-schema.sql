@@ -23,8 +23,8 @@ DROP TABLE IF EXISTS `journal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `journal` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `date_entered` datetime NOT NULL,
+  `row_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `date_entered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `journalcol` varchar(45) DEFAULT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `weight_kg` float DEFAULT NULL,
@@ -37,11 +37,12 @@ CREATE TABLE `journal` (
   `hip_cm` float DEFAULT NULL,
   `thigh_cm` float DEFAULT NULL,
   `photo_uri` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`,`user_id`),
-  UNIQUE KEY `id_UNIQUE` (`id`),
+  `last_updated` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`user_id`,`date_entered`),
+  UNIQUE KEY `id_UNIQUE` (`row_id`),
   KEY `fk_journal_user_idx` (`user_id`),
   CONSTRAINT `fk_journal_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,12 +60,11 @@ CREATE TABLE `user` (
   `email` varchar(45) NOT NULL,
   `authmethod` varchar(45) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `journal_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -76,4 +76,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-27  4:00:25
+-- Dump completed on 2015-10-29 18:04:08
