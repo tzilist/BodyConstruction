@@ -1,9 +1,15 @@
 from sqlalchemy import create_engine, MetaData, Table, select
 
 engine = create_engine('mysql+mysqldb://gregj:dbuser@localhost/bodyconstruction', echo=False)
+## hold metadata/schema
 metadata = MetaData(bind = engine)
-user = Table('user', metadata, autoload=True)
-journal = Table('journal', metadata, autoload=True)
+## here's how we grab metadata per table
+user = Table('user', metadata, autoload=True, autoload_with=engine)
+journal = Table('journal', metadata, autoload=True, autoload_with=engine)
+## but this is very cool: grab metadata for all tables!
+metadata.reflect(bind = engine)
+user = metadata.tables['user']
+
 conn = engine.connect()
 u = user.select(user.c.id == 1).execute().first()
 u2 = engine.execute('select * FROM user').first()
