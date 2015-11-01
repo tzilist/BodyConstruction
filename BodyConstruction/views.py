@@ -1,5 +1,8 @@
 from BodyConstruction import app
 from flask import render_template,redirect, url_for, request, session, flash
+from werkzeug.security import generate_password_hash, \
+     check_password_hash
+from sqlalchemy import create_engine, MetaData, Table, select
 from functools import wraps
 
 app.secret_key = 'gortGORTgortGORTgortGORT_I_Like_Beans_and_Chocolate_Milk!45'
