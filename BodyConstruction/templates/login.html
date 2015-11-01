@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -8,9 +9,9 @@
   <div class="logincontainer">
     <h1>Please login</h1>
     <br>
-    <form action="" method="post">
+    <form method="post">
       <input type="text" placeholder="Username" name="username" value="{{ request.form.username }}">
-      <input type="text" placeholder="Password" name="password" value="{{ request.form.password }}">
+      <input type="password" placeholder="Password" name="password" value="{{ request.form.password }}">
       <input class="loginbutton" type="submit" value="Login">
     </form>
     {% if error %}
@@ -19,7 +20,7 @@
     {% endif %}
     {% for messages in get_flashed_messages() %}
       <div class="flash">{{ messages }}</div>
-    {% endfor %}
     </p>
+    {% endfor %}
   </div>
 </body>
