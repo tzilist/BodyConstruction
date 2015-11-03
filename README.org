@@ -1,0 +1,25 @@
+* BodyConstruction
+A stupid app for taking pictures of your body. For mostly narcissistic and vain personalities.
+** Dependencies
+*** Flask
+    Run 'pip install flask' on your development machine and any runtime machines
+
+** Setting up
+Use virtualenv for this setup.
+
+Admin software installation
+#+BEGIN_SRC shell
+  sudo apt-get install python-virtualenv python-mysqldb libmysqlclient-dev
+#+END_SRC
+	
+MySQL db setup
+#+BEGIN_SRC shell
+mysql -u < -p bodyconstruction <  docs/bodyconstruction-db-schema.sql 
+#+END_SRC
+
+Non-privileged user virtual environment setup
+#+BEGIN_SRC shell
+source venv/bin/activate
+pip install MySQL-python
+venv/bin/python runserver.py 
+#+END_SRC
