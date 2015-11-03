@@ -20,6 +20,6 @@ mysql -u < -p bodyconstruction <  docs/bodyconstruction-db-schema.sql
 Non-privileged user virtual environment setup
 #+BEGIN_SRC shell
 source venv/bin/activate
-pip install MySQL-python
+pip install MySQL-python flask flask-sqlalchemy
 venv/bin/python runserver.py 
 #+END_SRC
