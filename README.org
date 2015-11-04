@@ -1,3 +1,15 @@
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline author:t c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:2 p:nil pri:nil
+#+OPTIONS: prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+TITLE: README
+#+DATE: <2015-11-04 Wed>
+#+AUTHOR: Gregory Grubbs
+#+EMAIL: gregory@dynapse.com
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 24.5.1 (Org mode 8.3.1)
+
 * BodyConstruction
 A stupid app for taking pictures of your body. For mostly narcissistic and vain personalities.
 ** Dependencies
@@ -7,17 +19,27 @@ A stupid app for taking pictures of your body. For mostly narcissistic and vain 
 ** Setting up
 Use virtualenv for this setup.
 
-Admin software installation
+*** Admin software installation
+    
+    Assure that =virtualenv= is installed, and mysqldb for python as well as mysqlclient
+    development libs.  Example is for Debian/Ubuntu packages.
+
 #+BEGIN_SRC shell
   sudo apt-get install python-virtualenv python-mysqldb libmysqlclient-dev
 #+END_SRC
 	
-MySQL db setup
+*** MySQL db setup
+
 #+BEGIN_SRC shell
-mysql -u < -p bodyconstruction <  docs/bodyconstruction-db-schema.sql 
+  # assumes db =bodyconstruction= has been created
+  mysql -u <USER> -p bodyconstruction <  docs/bodyconstruction-db-schema.sql 
 #+END_SRC
 
-Non-privileged user virtual environment setup
+*** Non-privileged user virtual environment setup
+
+    In the python virtual environment, use pip to install flask, flask-sqlalchemy, and the
+    python MySQL module
+
 #+BEGIN_SRC shell
 source venv/bin/activate
 pip install MySQL-python flask flask-sqlalchemy
