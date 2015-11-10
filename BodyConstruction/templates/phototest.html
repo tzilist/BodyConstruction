@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Body Construction Journal</title>
+    <link rel="stylesheet" type="text/css" href="../static/PgwSlideshow/pgwslideshow.css"/>
+    <style>
+     img.photowheel {max-width: 100%; }
+     div#photodiv { width: 1024px; }
+    </style>
+  </head>
+  <body>
+
+    <h1>Progress Photo Wheel for user {{ user[0] }}</h1>
+    <br/>		
+    <div id="photodiv">
+      <ul class="pgwSlideshow">
+        {% for i in photos %}
+          <li><img class="photowheel" src="../static/images/account/1/journal/{{ i[0] }}" alt="{{ i[1]  }}"/></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../static/PgwSlideshow/pgwslideshow.js"></script>
+
+    <script type="text/javascript">
+     $(document).ready(function() {
+       $('.pgwSlideshow').pgwSlideshow();
+     });
+    </script>
+
+  </body>
+</html>
