@@ -2,6 +2,10 @@ from werkzeug.security import generate_password_hash, \
     check_password_hash
 
 class User(object):
+    __tablename__ = 'user'
+
+    def __repr__(self):
+        return '<User %r>' % self.username
 
     def __init__(self, username, password):
         self.username = username
@@ -12,3 +16,4 @@ class User(object):
 
     def check_password(self, password):
         return check_password_hash(self.pw_hash, password)
+
