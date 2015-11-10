@@ -1,4 +1,4 @@
-from BodyConstruction import app
+from BodyConstruction import app, db
 from flask import render_template,redirect, url_for, request, session, flash
 from werkzeug.security import generate_password_hash, \
      check_password_hash
@@ -35,7 +35,8 @@ def index():
 @login_required
 def home():
     return render_template('home.html',
-                           title='User home base of a solid \'tude')
+                           title='User home base of a solid \'tude',
+                           tables=db.metadata.tables)
 
 
 #function to log user in
@@ -43,6 +44,7 @@ def home():
 def login():
     error = None;
     if request.method == 'POST':
+        db.engine.execute("select id, username, firstname, lastname, email, password FROM user WHERE email = '" + request.form['username'] + "'").first()
         if request.form['username'] != 'admin' or request.form['password'] != 'admin':
             error = "Invalid login or password. Please try again."
         else:
@@ -58,3 +60,12 @@ def logout():
     session.pop('logged_in', None)
     flash('You were logged out!')
     return redirect(url_for('login'))
+
+@app.route('/greg')
+def phototest():
+    user = db.engine.execute('select username,email FROM user WHERE id = 8').first()
+    photos = db.engine.execute('select photo_uri, comment FROM journal WHERE user_id = 8 ORDER BY date_entered')
+    return render_template('phototest.html',
+                           photos = photos,
+                           user=user)
+
