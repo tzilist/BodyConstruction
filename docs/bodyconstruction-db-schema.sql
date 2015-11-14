@@ -47,16 +47,6 @@ CREATE TABLE `journal` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `journal`
---
-
-LOCK TABLES `journal` WRITE;
-/*!40000 ALTER TABLE `journal` DISABLE KEYS */;
-INSERT INTO `journal` (`row_id`, `date_entered`, `journalcol`, `user_id`, `weight_kg`, `BMI`, `body_fat_pct`, `waist_cm`, `arm_cm`, `neck_cm`, `chest_cm`, `hip_cm`, `thigh_cm`, `photo_uri`, `last_updated`, `comment`) VALUES (29,'2015-11-05 22:39:37',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Pacquiao_Manny_muscles_pre_Morales_3_HoganPhotos_lx.jpg',NULL,'starting out'),(30,'2015-11-05 22:39:43',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Super_Manny_Pose_2.png',NULL,'whatever was I thinking?'),(31,'2015-11-05 22:39:44',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'YAhvSk.gif',NULL,'getting more massive?'),(32,'2015-11-05 22:39:45',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'manny-pacquiao.png',NULL,'muscle me more'),(33,'2015-11-06 03:47:26',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'maxresdefault.jpg',NULL,'kill me, it hurts!'),(34,'2015-11-06 03:47:40',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'turbulent_juice_by_gablesmcgee-d7y8u39.png',NULL,'Progress, BABY'),(35,'2015-11-06 03:48:00',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'unnamed.jpg',NULL,'Goal achieved!'),(37,'2015-11-06 19:06:42',NULL,10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(38,'2015-11-06 19:06:43',NULL,10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(39,'2015-11-06 19:06:44',NULL,10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(40,'2015-11-06 19:06:45',NULL,10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `journal` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user`
 --
 
@@ -78,16 +68,6 @@ CREATE TABLE `user` (
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `email`, `authmethod`, `password`, `is_active`) VALUES (8,'Gortsleigh',NULL,NULL,'gregory@dynapse.com',NULL,NULL,0),(10,'Tedzilla',NULL,NULL,'tedzilla@hotmail.com',NULL,NULL,0),(12,'Gortsleigh2',NULL,NULL,'gortsleigh@yahoo.co.uk',NULL,NULL,0);
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -98,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-09 20:14:21
+-- Dump completed on 2015-11-11 19:51:02

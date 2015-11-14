@@ -44,9 +44,15 @@ def home():
 def login():
     error = None;
     if request.method == 'POST':
-        db.engine.execute("select id, username, firstname, lastname, email, password FROM user WHERE email = '" + request.form['username'] + "'").first()
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = "Invalid login or password. Please try again."
+        rslt = db.engine.execute("select id, username, firstname, lastname, email, IFNULL(password, '') FROM user WHERE email = '" + request.form['email'] + "'").first()
+        
+        # if  rslt[5] is None:  ## empty password in DB!
+        if  1 is None:  ## empty password in DB!
+            error = "Invalid user in database.  Please contact support."
+        elif rslt is None:
+            error = "User not found in database."
+        elif not check_password_hash(rslt[5], request.form['password']):
+            error = "Invalid login or password.  Please try again."
         else:
             session['logged_in'] = True
             return redirect (url_for('home'))
@@ -60,6 +66,26 @@ def logout():
     session.pop('logged_in', None)
     flash('You were logged out!')
     return redirect(url_for('login'))
+
+# register new users
+@app.route('/register', methods=['POST','GET'])
+def register():
+    error = None;
+    if request.method == 'POST':
+        if request.form['password'] != request.form['repeat_password']:
+            error = "Passwords must be the same."
+        elif db.engine.execute("select count(*) FROM user WHERE email = '" + request.form['email'] + "'").first()[0] > 0:
+            error = "Email already exists."
+        elif db.engine.execute("select count(*) FROM user WHERE lower(username) = '" + request.form['username'].lower() + "'").first()[0] > 0:
+            error = "User name already exists."
+        else:
+            db.engine.execute("INSERT INTO user (username,email,password) VALUES('" + request.form['username'] + "', '" + request.form['email'] + "', '" + generate_password_hash(request.form['password']) + "')")
+            db.engine.execute('commit')
+            flash("User " + request.form['username'] + " registered; please log in now.")
+            return redirect(url_for('login'))
+    return render_template('register.html', error = error)
+
+
 
 @app.route('/greg')
 def phototest():
