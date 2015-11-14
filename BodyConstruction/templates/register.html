@@ -1,3 +1,4 @@
+{% from "_formhelpers.html" import render_field %}
 <!DOCTYPE html>
 <html>
 
@@ -6,20 +7,25 @@
   </head>
 
   <body>
-    <h1>Please login</h1>
-    Not a user yet?  Please <a href="/register">register</a>
-
-    <br/>
-    <br/>
-    <div class="logincontainer">
+    <div class="container">
+      <h1>Please Register</h1>
+      <br>
       <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" placeholder="Username (displayed for others)" name="username" id="username" value="{{ request.form.username }}" class="form-control">
+        </div>
         <div class="form-group">
           <label for="email">Email</label>
           <input type="text" placeholder="Email" name="email" id="email" value="{{ request.form.email }}" class="form-control">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" placeholder="Password" name="password" id="password" value="{{ request.form.password }}" class="form-control">
+          <input type="password" placeholder="Password" name="password" id="password" value="" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="repeat_password">Repeat Password</label>
+          <input type="password" placeholder="Repeat Password" name="repeat_password" id="repeat_password" value="" class="form-control">
         </div>
         
         <button class="loginbutton btn btn-success" type="submit">Login</button>
