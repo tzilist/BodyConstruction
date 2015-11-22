@@ -60,14 +60,24 @@ CREATE TABLE `user` (
   `lastname` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
   `authmethod` varchar(45) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
   `is_active` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `email`, `authmethod`, `password`, `is_active`) VALUES (8,'Gortsleigh',NULL,NULL,'gregory@dynapse.com',NULL,'pbkdf2:sha1:1000$3wRUuEAb$d1829cacd515c29128692d3033461a07113132ed',0),(10,'Tedzilla',NULL,NULL,'tedzilla@hotmail.com',NULL,'',0),(12,'Gortsleigh2',NULL,NULL,'gortsleigh@yahoo.co.uk',NULL,'',0),(13,'admin',NULL,NULL,'admin',NULL,'pbkdf2:sha1:1000$pAEVeY0z$02e93bbe28805ad2b56bf7a27c763dabc1a587e5',0),(17,'Gortsleigh33',NULL,NULL,'sneeb@sneeb.com',NULL,'pbkdf2:sha1:1000$WxWAPB6V$9327319ac6068c7c0f3335a1f4718323c508c4f2',0),(18,'Gortsleigh333',NULL,NULL,'sneeb@sneeb.com2',NULL,'pbkdf2:sha1:1000$8HbcIUU6$2dcf381199e574c34906318af8ec942a2786ad07',0),(19,'rozili',NULL,NULL,'rozili@rozili.com',NULL,'pbkdf2:sha1:1000$h1TdlUWy$e1cb91132092c6b096c96200bd3b4e94c13ae7f0',0),(20,'gorty',NULL,NULL,'gorty@gort.org',NULL,'',0),(22,'gorty2',NULL,NULL,'gorty2@gort.org',NULL,'',0),(23,'gorty3',NULL,NULL,'',NULL,'',0);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
