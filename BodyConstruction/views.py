@@ -2,8 +2,10 @@ from BodyConstruction import app, db
 from flask import render_template,redirect, url_for, request, session, flash
 from werkzeug.security import generate_password_hash, \
      check_password_hash
+from werkzeug import secure_filename
 from sqlalchemy import create_engine, MetaData, Table, select
 from functools import wraps
+import os
 
 app.secret_key = 'gortGORTgortGORTgortGORT_I_Like_Beans_and_Chocolate_Milk!45'
 
@@ -85,7 +87,24 @@ def register():
             return redirect(url_for('login'))
     return render_template('register.html', error = error)
 
+## UPLOADS
+ALLOWED_EXTENSIONS = ['png','gif','jpg','jpeg']
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
+@login_required
+@app.route('/uploadPic', methods = ['GET','POST'])
+def upload_pic():
+    error = None
+    if request.method == 'POST':
+        file = request.files['journalpic']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('home',
+                                    filename=filename))
+    return render_template('uploadpic.html', error = error)
 
 @app.route('/greg')
 def phototest():

@@ -2,6 +2,8 @@
 
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
+import os
+
 app = Flask(__name__)
 
 
@@ -9,6 +11,14 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://gregj:dbuser@localhost/bodyconstruction'
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = False
+
+app.config['DEFAULT_FILE_STORAGE'] = 'filesystem'
+app.config['UPLOAD_FOLDER'] = os.path.realpath('.') + '/static'
+app.config['UPLOADED_PHOTOS_ALLOW'] = set(['png', 'jpg', 'jpeg'])
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
+
+
 db = SQLAlchemy(app)
 
 ## grab metadata for all tables!
