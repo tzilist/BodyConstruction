@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://gregj:dbuser@localhost/
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = False
 
 app.config['DEFAULT_FILE_STORAGE'] = 'filesystem'
-app.config['UPLOAD_FOLDER'] = os.path.realpath('.') + '/static'
+app.config['UPLOAD_FOLDER'] = os.path.realpath('.') + '/BodyConstruction/static/uploads'
 app.config['UPLOADED_PHOTOS_ALLOW'] = set(['png', 'jpg', 'jpeg'])
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 

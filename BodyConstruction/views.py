@@ -1,5 +1,5 @@
 from BodyConstruction import app, db
-from flask import render_template,redirect, url_for, request, session, flash
+from flask import render_template,redirect, url_for, request, session, flash, send_from_directory
 from werkzeug.security import generate_password_hash, \
      check_password_hash
 from werkzeug import secure_filename
@@ -102,9 +102,14 @@ def upload_pic():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('home',
+            return redirect(url_for('viewpic',
                                     filename=filename))
     return render_template('uploadpic.html', error = error)
+
+@login_required
+@app.route('/viewpic/<filename>')
+def viewpic(filename):
+    return render_template('viewpic.html', filename=filename)
 
 @app.route('/greg')
 def phototest():
