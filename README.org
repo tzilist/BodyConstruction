@@ -11,15 +11,27 @@ Admin software installation
 #+BEGIN_SRC shell
   sudo apt-get install python-virtualenv python-mysqldb libmysqlclient-dev
 #+END_SRC
-	
+
 MySQL db setup
 #+BEGIN_SRC shell
-mysql -u <USER> -p bodyconstruction <  docs/bodyconstruction-db-schema.sql 
+mysql -u <USER> -p bodyconstruction <  docs/bodyconstruction-db-schema.sql
+#+END_SRC
+
+To start server
+#+BEGIN_SRC shell
+mysqld_safe&
+mysql -u <USER> -p
+use bodyconstruction;
+#+END_SRC
+
+To stop server
+#+BEGIN_SRC shell
+mysqladmin -u root shutdown
 #+END_SRC
 
 Non-privileged user virtual environment setup
 #+BEGIN_SRC shell
 source venv/bin/activate
 pip install MySQL-python flask flask-sqlalchemy flask-login flask-wtf
-venv/bin/python runserver.py 
+venv/bin/python runserver.py
 #+END_SRC
