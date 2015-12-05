@@ -47,6 +47,16 @@ CREATE TABLE `journal` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `journal`
+--
+
+LOCK TABLES `journal` WRITE;
+/*!40000 ALTER TABLE `journal` DISABLE KEYS */;
+INSERT INTO `journal` (`row_id`, `date_entered`, `journalcol`, `user_id`, `weight_kg`, `BMI`, `body_fat_pct`, `waist_cm`, `arm_cm`, `neck_cm`, `chest_cm`, `hip_cm`, `thigh_cm`, `photo_uri`, `last_updated`, `comment`) VALUES (29,'2015-11-05 22:39:37',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Pacquiao_Manny_muscles_pre_Morales_3_HoganPhotos_lx.jpg',NULL,'starting out'),(30,'2015-11-05 22:39:43',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Super_Manny_Pose_2.png',NULL,'whatever was I thinking?'),(31,'2015-11-05 22:39:44',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'YAhvSk.gif',NULL,'getting more massive?'),(32,'2015-11-05 22:39:45',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'manny-pacquiao.png',NULL,'muscle me more'),(33,'2015-11-06 03:47:26',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'maxresdefault.jpg',NULL,'kill me, it hurts!'),(34,'2015-11-06 03:47:40',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'turbulent_juice_by_gablesmcgee-d7y8u39.png',NULL,'Progress, BABY'),(35,'2015-11-06 03:48:00',NULL,8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'unnamed.jpg',NULL,'Goal achieved!'),(37,'2015-11-06 19:06:42',NULL,10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(38,'2015-11-06 19:06:43',NULL,10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(39,'2015-11-06 19:06:44',NULL,10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(40,'2015-11-06 19:06:45',NULL,10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `journal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -60,14 +70,24 @@ CREATE TABLE `user` (
   `lastname` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
   `authmethod` varchar(45) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
   `is_active` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`id`, `username`, `firstname`, `lastname`, `email`, `authmethod`, `password`, `is_active`) VALUES (8,'Gortsleigh',NULL,NULL,'gregory@dynapse.com',NULL,'pbkdf2:sha1:1000$3wRUuEAb$d1829cacd515c29128692d3033461a07113132ed',0),(10,'Tedzilla',NULL,NULL,'tedzilla@hotmail.com',NULL,'',0),(12,'Gortsleigh2',NULL,NULL,'gortsleigh@yahoo.co.uk',NULL,'',0),(13,'admin',NULL,NULL,'admin',NULL,'pbkdf2:sha1:1000$pAEVeY0z$02e93bbe28805ad2b56bf7a27c763dabc1a587e5',0),(17,'Gortsleigh33',NULL,NULL,'sneeb@sneeb.com',NULL,'pbkdf2:sha1:1000$WxWAPB6V$9327319ac6068c7c0f3335a1f4718323c508c4f2',0),(18,'Gortsleigh333',NULL,NULL,'sneeb@sneeb.com2',NULL,'pbkdf2:sha1:1000$8HbcIUU6$2dcf381199e574c34906318af8ec942a2786ad07',0),(19,'rozili',NULL,NULL,'rozili@rozili.com',NULL,'pbkdf2:sha1:1000$h1TdlUWy$e1cb91132092c6b096c96200bd3b4e94c13ae7f0',0),(20,'gorty',NULL,NULL,'gorty@gort.org',NULL,'',0),(22,'gorty2',NULL,NULL,'gorty2@gort.org',NULL,'',0),(23,'gorty3',NULL,NULL,'',NULL,'',0);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -78,4 +98,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-11 19:51:02
+-- Dump completed on 2015-11-22 11:17:42
